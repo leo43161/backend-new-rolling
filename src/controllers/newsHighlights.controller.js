@@ -1,9 +1,9 @@
 const newsCtrl = {};
-import { New } from "../models/new";
+import { NewHighlight } from "../models/new";
 
-newsCtrl.getNews = async (req, res) => {
+newsCtrl.getNewHighlight = async (req, res) => {
   try {
-    const datos = await New.find(); //Busca todos los documentos
+    const datos = await NewHighlight.find(); //Busca todos los documentos
     res.status(200).json(datos);
   } catch (error) {
     console.log(error);
@@ -11,11 +11,11 @@ newsCtrl.getNews = async (req, res) => {
   }
 };
 
-newsCtrl.postNew = async (req, res) => {
+newsCtrl.postNewHighlight = async (req, res) => {
   const { titulo, autor, descripcion, contenido, categoria, img } = req.body;
   console.log(req.body);
   try {
-    const newAdd = new New({
+    const newAdd = new NewHighlight({
       titulo,
       autor,
       descripcion,

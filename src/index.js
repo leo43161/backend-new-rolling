@@ -24,4 +24,5 @@ app.use('/news', newsRouter);
 app.listen(app.get("port"), () => {
   console.log(path.join(__dirname, "../public"));
   console.log("Servidor en el puerto", +app.get("port"));
+  console.log("Tras los enfrentamientos con la Policía, ruralistas esperan señales de la Casa de Gobierno".length)
 });
