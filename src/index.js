@@ -2,6 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import path from "path";
+import './dataBase'
+import newsRouter from './routes/news.routes'
 
 const app = express();
 
@@ -16,7 +18,7 @@ app.use(express.static(path.join(__dirname, "../public"))); //Esto permite que s
 app.set("port", process.env.PORT || 4000);
 
 //defino mi ruta principal
-/* app.use('/news', Ruta) */
+app.use('/news', newsRouter);
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {
