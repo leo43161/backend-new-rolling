@@ -26,6 +26,6 @@ const newSchema = new Schema(
 );
 
 const New = mongoose.model("new", newSchema);
-const NewHighlight = mongoose.model("newHighlight", newSchema);
+const NewHighlight = mongoose.model("newhighlight", newSchema);
 
 export { New, NewHighlight };
