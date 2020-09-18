@@ -5,5 +5,5 @@ import categoriaControllers from '../controllers/categorias.controllers';
 const {getCategorias, postCategoria, deleteCategoria, getCategoria} = categoriaControllers;
 
 router.route('/').get(getCategorias).post(postCategoria);
-router.route('/:titulo').get(getCategorias).delete(deleteCategoria)
+router.route('/:id').get(getCategoria).delete(deleteCategoria)
 export default router;

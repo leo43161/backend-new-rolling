@@ -54,8 +54,8 @@ categoriasCtrl.postCategoria = async (req, res) => {
   
   categoriasCtrl.getCategoria = async (req, res) => {
     try {
-      const noticiaEncontrada = await Categoria.findById(req.params.id);
-      res.status(200).json(noticiaEncontrada);
+      const categoriaEncontrada = await Categoria.findById(req.params.id);
+      res.status(200).json(categoriaEncontrada);
     } catch (error) {
       res
         .status(500)
