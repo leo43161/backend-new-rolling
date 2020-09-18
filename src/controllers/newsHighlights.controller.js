@@ -12,16 +12,24 @@ newsCtrl.getNewHighlight = async (req, res) => {
 };
 
 newsCtrl.postNewHighlight = async (req, res) => {
-  const { titulo, autor, descripcion, contenido, categoria, img } = req.body;
-  console.log(req.body);
+  const {
+    titulo,
+    autor,
+    descripcion,
+    contenido,
+    categoria,
+    imgPrincipal,
+    imgSecundaria,
+  } = req.body;
   try {
-    const newAdd = new NewHighlight({
+    const newAdd = new New({
       titulo,
       autor,
       descripcion,
       contenido,
       categoria,
-      img,
+      imgPrincipal,
+      imgSecundaria,
     });
     await newAdd.save();
     res.status(201).json({ mensaje: "Se envio correctamente" });

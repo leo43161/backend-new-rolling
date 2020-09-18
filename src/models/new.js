@@ -21,7 +21,7 @@ const newSchema = new Schema(
       maxlength: 20,
     },
     imgPrincipal: String,
-    imgSecundaria: String
+    imgSecundaria: String,
   },
   { timestamps: true }
 );

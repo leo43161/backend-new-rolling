@@ -13,7 +13,15 @@ newsCtrl.getNews = async (req, res) => {
 };
 
 newsCtrl.postNew = async (req, res) => {
-  const { titulo, autor, descripcion, contenido, categoria, img } = req.body;
+  const {
+    titulo,
+    autor,
+    descripcion,
+    contenido,
+    categoria,
+    imgPrincipal,
+    imgSecundaria,
+  } = req.body;
   console.log(req.body);
   try {
     const newAdd = new New({
@@ -22,7 +30,8 @@ newsCtrl.postNew = async (req, res) => {
       descripcion,
       contenido,
       categoria,
-      img,
+      imgPrincipal,
+      imgSecundaria,
     });
     await newAdd.save();
     res.status(201).json({ mensaje: "Se envio correctamente" });
@@ -47,7 +56,9 @@ newsCtrl.getNew = async (req, res) => {
     const noticiaEncontrada = await New.findById(req.params.id);
     res.status(200).json(noticiaEncontrada);
   } catch (error) {
-    res.status(500).json({ mensaje:"Ocurrio un error al intentar soliciar un producto"});
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error al intentar soliciar un producto" });
     next(error);
   }
 };
