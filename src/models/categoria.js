@@ -3,7 +3,8 @@ import mongoose, {Schema} from 'mongoose';
 const categoriaSchema = new Schema ({
     titulo: {
         type: String,
-        maxlength: 20
+        maxlength: 20,
+        unique: true
     },
     descripcion: String
 })
