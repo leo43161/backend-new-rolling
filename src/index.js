@@ -4,6 +4,7 @@ import cors from "cors";
 import path from "path";
 import './dataBase'
 import newsRouter from './routes/news.routes'
+import newsHighlightsRouter from './routes/newsHighlights.routes'
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.set("port", process.env.PORT || 4000);
 
 //defino mi ruta principal
 app.use('/news', newsRouter);
+app.use('/highlights', newsHighlightsRouter);
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {

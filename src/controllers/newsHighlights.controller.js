@@ -1,7 +1,7 @@
 const newsCtrl = {};
 import { NewHighlight } from "../models/new";
 
-newsCtrl.getNewHighlight = async (req, res) => {
+newsCtrl.getNewsHighlights = async (req, res) => {
   try {
     const datos = await NewHighlight.find(); //Busca todos los documentos
     res.status(200).json(datos);
@@ -22,7 +22,7 @@ newsCtrl.postNewHighlight = async (req, res) => {
     imgSecundaria,
   } = req.body;
   try {
-    const newAdd = new New({
+    const newAdd = new NewHighlight({
       titulo,
       autor,
       descripcion,
@@ -65,7 +65,7 @@ newsCtrl.getNewHighlight = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ mensaje: "Ocurrio un error al intentar soliciar un producto" });
+      .json({ mensaje: "Ocurrio un" });
     next(error);
   }
 };
