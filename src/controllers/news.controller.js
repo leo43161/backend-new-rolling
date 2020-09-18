@@ -12,6 +12,8 @@ newsCtrl.getNews = async (req, res) => {
   }
 };
 
+//Funcion que sirve para poder subir una noticia a la base de datos
+
 newsCtrl.postNew = async (req, res) => {
   const {
     titulo,
