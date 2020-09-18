@@ -35,7 +35,7 @@ categoriasCtrl.postCategoria = async (req, res) => {
   
   categoriasCtrl.deleteCategoria = async (req, res) => {
     try {
-      await Categoria.findByIdAndDelete(req.params.titulo);
+      await Categoria.findByIdAndDelete(req.params.id);
       res.status(200).json({ mensaje: "Se elimino correctamente" });
     } catch (error) {
       res.status(500).json({ mensaje: "Ocurrio un error al intentar eliminar" });
