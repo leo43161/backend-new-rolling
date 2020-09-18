@@ -1,7 +1,6 @@
 import {Router} from 'express';
 const router = Router();
 import newsController from '../controllers/news.controller';
-import newsHighlightsController from '../controllers/newsHighlights.controller';
 
 const { getNews, postNew, deleteNew, getNew, putNew } = newsController;
 
