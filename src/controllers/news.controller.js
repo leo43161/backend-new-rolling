@@ -35,11 +35,20 @@ newsCtrl.postNew = async (req, res) => {
 newsCtrl.deleteNew = async (req, res) => {
   try {
     await New.findByIdAndDelete(req.params.id);
-  res.status(200).json({mensaje:"Se elimino correctamente"});
+    res.status(200).json({ mensaje: "Se elimino correctamente" });
   } catch (error) {
-    res.status(500).json({mensaje:"Ocurrio un error al intentar eliminar"})
-  };
-  next(error);
-}
+    res.status(500).json({ mensaje: "Ocurrio un error al intentar eliminar" });
+    next(error);
+  }
+};
 
+newsCtrl.getNew = async (req, res) => {
+  try {
+    const noticiaEncontrada = await New.findById(req.params.id);
+    res.status(200).json(noticiaEncontrada);
+  } catch (error) {
+    res.status(500).json({ mensaje:"Ocurrio un error al intentar soliciar un producto"});
+    next(error);
+  }
+};
 export default newsCtrl;

@@ -7,7 +7,7 @@ const { getNews, postNew, deleteNew } = newsController;
 const { postNewHighlight, getNewHighlight } = newsHighlightsController;
 
 router.route("/").get(getNews).post(postNew);
-router.route("/:id").delete(deleteNew)
+router.route("/:id").delete(deleteNew).get()
 router.route("/highlights").get(getNewHighlight).post(postNewHighlight);
 
 export default router;
