@@ -2,9 +2,10 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import path from "path";
-import './dataBase'
-import newsRouter from './routes/news.routes'
-import newsHighlightsRouter from './routes/newsHighlights.routes'
+import './dataBase';
+import newsRouter from './routes/news.routes';
+import newsHighlightsRouter from './routes/newsHighlights.routes';
+import categoriasRouter from './routes/categorias.routes';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.set("port", process.env.PORT || 4000);
 //defino mi ruta principal
 app.use('/news', newsRouter);
 app.use('/highlights', newsHighlightsRouter);
+app.use('/categorias', categoriasRouter);
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {

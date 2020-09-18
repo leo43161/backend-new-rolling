@@ -13,3 +13,5 @@ categoriasCtrl.getCategorias = async (req, res) => {
   }
   
 };
+
+export default categoriasCtrl
