@@ -8,6 +8,7 @@ newsCtrl.getNews = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ mensaje: "Ocurrio un error" });
+    next(error);
   }
 };
 
@@ -30,5 +31,15 @@ newsCtrl.postNew = async (req, res) => {
     next(error);
   }
 };
+
+newsCtrl.deleteNew = async (req, res) => {
+  try {
+    await New.findByIdAndDelete(req.params.id);
+  res.status(200).json({mensaje:"Se elimino correctamente"});
+  } catch (error) {
+    res.status(500).json({mensaje:"Ocurrio un error al intentar eliminar"})
+  };
+  next(error);
+}
 
 export default newsCtrl;
