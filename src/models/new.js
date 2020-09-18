@@ -20,7 +20,8 @@ const newSchema = new Schema(
       type: String,
       maxlength: 20,
     },
-    img: String,
+    imgPrincipal: String,
+    imgSecundaria: String
   },
   { timestamps: true }
 );
