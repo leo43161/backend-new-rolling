@@ -23,6 +23,9 @@ newsCtrl.postNew = async (req, res) => {
     categoria,
     imgPrincipal,
     imgSecundaria,
+    pieDeImgPrincipal,
+    pieDeImgSecundaria,
+    fecha
   } = req.body;
   console.log(req.body);
   try {
@@ -34,6 +37,9 @@ newsCtrl.postNew = async (req, res) => {
       categoria,
       imgPrincipal,
       imgSecundaria,
+      pieDeImgPrincipal,
+      pieDeImgSecundaria,
+      fecha
     });
     await newAdd.save();
     res.status(201).json({ mensaje: "Se envio correctamente" });
@@ -56,11 +62,13 @@ newsCtrl.deleteNew = async (req, res) => {
 newsCtrl.putNew = async (req, res) => {
   try {
     await New.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json({mensaje: "La noticia de edito correctamente"});
+    res.status(200).json({ mensaje: "La noticia de edito correctamente" });
   } catch (error) {
-    res.status(500).json({mensaje: "Ocurrio un error al intentar editar la noticia"});
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error al intentar editar la noticia" });
   }
-}
+};
 
 newsCtrl.getNew = async (req, res) => {
   try {

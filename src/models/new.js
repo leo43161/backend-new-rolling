@@ -10,18 +10,37 @@ const newSchema = new Schema(
     autor: {
       type: String,
       maxlength: 40,
+      required: true,
     },
     descripcion: {
       type: String,
       maxlength: 200,
+      required: true
     },
-    contenido: String,
+    contenido: {
+      type: String,
+      required: true
+    },
     categoria: {
       type: String,
       maxlength: 20,
+      required: true
     },
-    imgPrincipal: String,
+    imgPrincipal: { type: String, required: true },
+    pieDeImgPrincipal: {
+      type: String,
+      maxlength: 100,
+      required: true,
+    },
     imgSecundaria: String,
+    pieDeImgSecundaria: {
+      type: String,
+      maxlength: 100
+    },
+    fecha: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
