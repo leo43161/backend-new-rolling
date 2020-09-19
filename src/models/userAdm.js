@@ -23,6 +23,6 @@ const userAdmSchema = new Schema({
 
 });
 
-const userAdmSchema = mongoose.model("administrador", userAdmSchema);
+const Administrador = mongoose.model("administrador", userAdmSchema);
 
-export default Categoria;
+export default Administrador;
