@@ -3,12 +3,14 @@ import mongoose, { Schema } from "mongoose";
 const categoriaSchema = new Schema({
   titulo: {
     type: String,
-    maxlength: 100,
+    maxlength: 30,
+    unique: true,
     required: true,
   },
   descripcion: {
     type: String,
-    required: true
+    maxlength: 150,
+    required: true,
   },
 });
 

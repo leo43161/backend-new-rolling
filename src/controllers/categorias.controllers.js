@@ -1,6 +1,5 @@
 const categoriasCtrl = {};
 import Categoria from "../models/categoria";
-import { New } from "../models/new";
 
 categoriasCtrl.getCategorias = async (req, res) => {
   try {
@@ -14,8 +13,6 @@ categoriasCtrl.getCategorias = async (req, res) => {
   }
 };
 
-//Funcion que sirve para poder subir una noticia a la base de datos
-
 categoriasCtrl.postCategoria = async (req, res) => {
   const { titulo, descripcion } = req.body;
   try {
@@ -23,22 +20,23 @@ categoriasCtrl.postCategoria = async (req, res) => {
       titulo,
       descripcion
     });
-    addCategoria.save();
-    res.status(201).json({mensaje:"Se guardo exitosamente"});
+    await addCategoria.save();
+    res.status(201).json({ mensaje: "Se guardo exitosamente" });
   } catch (error) {
-    res.status(500).json({mensaje:"Ocurrio un error al guardar"});
-    next(error)
+    console.log(error + "aqui termian el error");
+    res.status(500).json({ mensajeError: "Ocurrio un error" });
+    next(error);
   }
 };
 
 categoriasCtrl.putCategoria = async (req, res) => {
   try {
     await Categoria.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json({ mensaje: "La noticia de edito correctamente" });
+    res.status(200).json({ mensaje: "La categoria de edito correctamente" });
   } catch (error) {
     res
       .status(500)
-      .json({ mensaje: "Ocurrio un error al intentar editar la noticia" });
+      .json({ mensaje: "Ocurrio un error al intentar editar la categoria" });
   }
 };
 
@@ -49,7 +47,7 @@ categoriasCtrl.getCategoria = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ mensaje: "Ocurrio un error al intentar solicitar un producto" });
+      .json({ mensaje: "Ocurrio un error al intentar solicitar una categoria" });
     next(error);
   }
 };
