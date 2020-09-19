@@ -6,7 +6,6 @@ newsCtrl.getNews = async (req, res) => {
     const datos = await New.find(); //Busca todos los documentos
     res.status(200).json(datos);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ mensaje: "Ocurrio un error al solicitar noticias" });
     next(error);
   }

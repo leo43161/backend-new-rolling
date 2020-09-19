@@ -13,7 +13,6 @@ userAdmCtrl.getUserAdm = async (req, res) => {
 
 userAdmCtrl.postUserAdm = async (req, res) => {
   const { userAdm, email, contraseña, logueado, activo } = req.body;
-  console.log(req.body);
   try {
     const userAdd = new Administrador({
       userAdm,

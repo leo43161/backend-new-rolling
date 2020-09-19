@@ -30,5 +30,4 @@ app.use('/usersAdm', userAdmRouter)
 app.listen(app.get("port"), () => {
   console.log(path.join(__dirname, "../public"));
   console.log("Servidor en el puerto", +app.get("port"));
-  console.log("Parece ser un gran año para Zac Efron. Primero, el actor estrenó en julio su serie documental “Con los pies sobre la tierra”, y, ahora, parece que su vida personal ha ido floreciendo muy bien".length)
 });
