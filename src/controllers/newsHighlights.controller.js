@@ -20,6 +20,9 @@ newsCtrl.postNewHighlight = async (req, res) => {
     categoria,
     imgPrincipal,
     imgSecundaria,
+    pieDeImgPrincipal,
+    pieDeImgSecundaria,
+    fecha
   } = req.body;
   try {
     const newAdd = new NewHighlight({
@@ -30,6 +33,9 @@ newsCtrl.postNewHighlight = async (req, res) => {
       categoria,
       imgPrincipal,
       imgSecundaria,
+      pieDeImgPrincipal,
+      pieDeImgSecundaria,
+      fecha
     });
     await newAdd.save();
     res.status(201).json({ mensaje: "Se envio correctamente" });
