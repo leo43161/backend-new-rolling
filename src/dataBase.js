@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const url = "mongodb://localhost:27017/news"; //Cadena de conexion a la base de datos
+const url = "mongodb+srv://leo43:rolling22@cluster0.9z2qy.gcp.mongodb.net/test"; //Cadena de conexion a la base de datos
 
 //Definimos que operaciones se puede hacer a la base de datos
 mongoose.connect(url, {
