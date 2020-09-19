@@ -77,7 +77,7 @@ newsCtrl.getNew = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ mensaje: "Ocurrio un error al intentar solicitar un producto" });
+      .json({ mensaje: "Ocurrio un error al intentar solicitar una noticia" });
     next(error);
   }
 };
