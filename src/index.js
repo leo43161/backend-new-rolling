@@ -2,8 +2,9 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import path from "path";
-import './dataBase'
-import newsRouter from './routes/news.routes'
+import './dataBase';
+import newsRouter from './routes/news.routes';
+import userAdmRouter from './routes/userAdm.routes';
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.set("port", process.env.PORT || 4000);
 
 //defino mi ruta principal
 app.use('/news', newsRouter);
-app.use('/usersAdm', newsRouter)
+app.use('/usersAdm', userAdmRouter)
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {
