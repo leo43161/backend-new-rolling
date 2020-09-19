@@ -6,7 +6,11 @@ const categoriaSchema = new Schema ({
         maxlength: 20,
         unique: true
     },
-    descripcion: String
+    descripcion: {
+        type: String,
+        maxlength: 150,
+        unique: true
+    },
 })
 
 const Categoria = mongoose.model("categorias", categoriaSchema);
