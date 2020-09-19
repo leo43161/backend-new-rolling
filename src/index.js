@@ -6,6 +6,7 @@ import './dataBase';
 import newsRouter from './routes/news.routes';
 import newsHighlightsRouter from './routes/newsHighlights.routes';
 import categoriasRouter from './routes/categorias.routes';
+import userAdmRouter from './routes/userAdm.routes';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.set("port", process.env.PORT || 4000);
 app.use('/news', newsRouter);
 app.use('/highlights', newsHighlightsRouter);
 app.use('/categorias', categoriasRouter);
+app.use('/usersAdm', userAdmRouter)
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {
