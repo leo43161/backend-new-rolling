@@ -19,6 +19,7 @@ app.set("port", process.env.PORT || 4000);
 
 //defino mi ruta principal
 app.use('/news', newsRouter);
+app.use('/usersAdm', newsRouter)
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {
