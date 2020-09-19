@@ -24,7 +24,7 @@ app.set("port", process.env.PORT || 4000);
 app.use('/news', newsRouter);
 app.use('/highlights', newsHighlightsRouter);
 app.use('/categorias', categoriasRouter);
-app.use('/usersAdm', userAdmRouter)
+app.use('/adm', userAdmRouter);
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {
