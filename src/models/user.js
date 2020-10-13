@@ -15,7 +15,7 @@ const userSchema = new Schema(
       unique: true,
       required: true,
     },
-    contraseña: {
+    contrasenia: {
       type: String,
       maxlength: 30,
       required: true,
@@ -30,22 +30,28 @@ const userSchema = new Schema(
 userSchema.pre("save", function (next) {
   const usuario = this;
   const salt = 12;
-  bcrypt.hash(usuario.contraseña, salt, async (err, hash) => {
-    if (err) {
-      next(err);
-    }
-    usuario.contraseña = hash;
-    next();
-  });
+  if (usuario.isNew || usuario.isModified("contrasenia")) {
+    bcrypt.hash(usuario.contrasenia, salt, async (err, hash) => {
+      if (err) {
+        next(err);
+      }
+      usuario.contrasenia = hash;
+      next();
+    });
+  }else{
+    next()
+  }
 });
 
-userSchema.methods.matchContraseñas = async (contraseña) => {
-   bcrypt.compare(myPlaintextPassword, hash, function (err, result) {
-    // result == true
+userSchema.methods.matchContrasenias = async function (contrasenia) {
+  await bcrypt.compare(contrasenia, this.contrasenia, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    return result;
   });
-  return await bcrypt.compare(contraseña, this.contraseña);
 };
 
-const Usuario = mongoose.model("Usuario", userSchema);
+const Usuario = mongoose.model("usuario", userSchema);
 
 export default Usuario;
