@@ -1,7 +1,5 @@
 const userCtrl = {};
 import Usuario from "../models/user";
-/* import passport from "passport";
-import bcrypt from "bcrypt"; */
 
 userCtrl.getUsers = async (req, res) => {
   try {
@@ -48,9 +46,14 @@ userCtrl.singin = async (req, res) => {
   }
   try {
     const match = await userFind.matchContrasenias(contrasenia);
-    res
+    console.log(match)
+    if(match){
+      res
       .status(201)
-      .json({ mensaje: "La contraseñas son iguales", match: true });
+      .json({ mensaje: "La contraseñas son iguales", "match": match });
+    }else{
+      res.status(500).json({ mensaje: "La contraseña o el email no coinciden" });
+    }
   } catch (error) {
     res.status(500).json({ mensaje: "Ocurrio un error" });
     next(error);

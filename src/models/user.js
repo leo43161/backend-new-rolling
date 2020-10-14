@@ -44,12 +44,7 @@ userSchema.pre("save", function (next) {
 });
 
 userSchema.methods.matchContrasenias = async function (contrasenia) {
-  await bcrypt.compare(contrasenia, this.contrasenia, function (err, result) {
-    if (err) {
-      return next(err);
-    }
-    return result;
-  });
+  return await bcrypt.compare(contrasenia, this.contrasenia)
 };
 
 const Usuario = mongoose.model("usuario", userSchema);
