@@ -13,7 +13,7 @@ import usersRouter from "./routes/user.routes";
 import sessionRouter from "./routes/session.routes";
 /* import passport from "passport"; */
 import bodyParser from "body-parser";
-import "./config/passport";
+import "./config/sessions";
 const app = express();
 
 const MONGO_URL =
@@ -34,7 +34,7 @@ app.use(
       url: MONGO_URL,
       autoReconnect: true,
     }),
-    name: "session"
+    name: "session",
   })
 );
 /* app.use(passport.initialize());
@@ -51,27 +51,32 @@ app.use("/highlights", newsHighlightsRouter);
 app.use("/categorias", categoriasRouter);
 app.use("/adm", userAdmRouter);
 app.use("/users", usersRouter);
-app.use("/login", sessionRouter)
+app.use("/", sessionRouter);
 
-app.get("/login", (req, res) => {
-  req.session.reload(function(err) {
-    if(err){
+
+//Esto funciona
+/*  app.get("/login", (req, res) => {
+  req.session.reload(function (err) {
+    if (err) {
       return err;
     }
     res.status(200).json({ mensaje: "Se a traido la session " });
-  })
+  });
   req.session.cuenta = req.session.cuenta ? req.session.cuenta + 1 : 1;
   res.send(`Hola! has visto esta pagina ${req.session.cuenta}`);
-}); 
-
+});
+ */
 app.get("/logout", (req, res) => {
-  req.session.destroy(function(err) {
-    if(err){
+  req.session.destroy(function (err) {
+    if (err) {
       err(null, false, { mensaje: "Se a deslogueado" });
     }
     res.status(200).json({ mensaje: "Se a deslogueado" });
-  })
+  });
 });
+
+
+
 //Escucho el puerto
 app.listen(app.get("port"), () => {
   console.log(path.join(__dirname, "../public"));

@@ -22,6 +22,7 @@ userCtrl.singup = async (req, res) => {
     email,
     contrasenia,
     activo: false,
+    logueado: false,
   });
   try {
     await nuevoUsuario.save();
@@ -42,15 +43,15 @@ userCtrl.singin = async (req, res) => {
   console.log(userFind);
   if (!userFind) {
     res.status(500).json({ mensaje: "Usuario no encontrado" });
-    next(true);
   }
   try {
     const match = await userFind.matchContrasenias(contrasenia);
     console.log(match)
     if(match){
+      userFind.cambiarActivo();
       res
       .status(201)
-      .json({ mensaje: "La contraseñas son iguales", "match": match });
+      .json({ mensaje: "La contraseñas son iguales", "match": match, user: userFind });
     }else{
       res.status(500).json({ mensaje: "La contraseña o el email no coinciden" });
     }
@@ -60,9 +61,9 @@ userCtrl.singin = async (req, res) => {
   }
 };
 
-userCtrl.logout = (req, res) => {
-  req.logout();
-  res.send("Logout existoso");
+userCtrl.logout = async(req, res) => {
+  const userFind = await Usuario.findOne({ activo: false });
+  console.log(userFind);
 };
 
 export default userCtrl;

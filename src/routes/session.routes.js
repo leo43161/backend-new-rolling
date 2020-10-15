@@ -1,11 +1,9 @@
-import {Router} from 'express';
+import { Router } from "express";
 const router = Router();
-import sessionController from '../controllers/user.controller'
+import sessionController from "../controllers/session.controllers";
 
-/* const { singup, singin, getUsers } = sessionController
+const { postLogin } = sessionController;
 
-router.route('/singup').post(singup);
-router.route('/').get(getUsers);
-router.route('/singin').post(singin); */
+router.route("/login").post(postLogin);
 
 export default router;

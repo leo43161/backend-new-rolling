@@ -3,9 +3,9 @@ import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
   {
-    user: {
+    nombre: {
       type: String,
-      maxlength: 15,
+      maxlength: 50,
       unique: true,
       required: true,
     },
@@ -15,12 +15,26 @@ const userSchema = new Schema(
       unique: true,
       required: true,
     },
+    direccion: {
+      type: String,
+      required: true,
+    },
+    localidad: {
+      type: String,
+      required: true,
+    },
+    codigoPostal: {
+      type: Number,
+      maxlength: 10,
+      required: true,
+    },
     contrasenia: {
       type: String,
-      maxlength: 30,
+      minlength: 8,
       required: true,
     },
     activo: Boolean,
+    logueado: Boolean,
   },
   {
     timestamps: true,
@@ -45,6 +59,17 @@ userSchema.pre("save", function (next) {
 
 userSchema.methods.matchContrasenias = async function (contrasenia) {
   return await bcrypt.compare(contrasenia, this.contrasenia)
+};
+
+userSchema.methods.cambiarActivo = async function () {
+  const usuario = this;
+  if(usuario.activo){
+    usuario.logueado = false;
+    next();
+  }else{
+    usuario.logueado = true;
+    next();
+  }
 };
 
 const Usuario = mongoose.model("usuario", userSchema);
