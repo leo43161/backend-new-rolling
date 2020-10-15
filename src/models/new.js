@@ -41,11 +41,11 @@ const newSchema = new Schema(
       type: String,
       required: true,
     },
+    destacado: Boolean,
   },
   { timestamps: true }
 );
 
 const New = mongoose.model("new", newSchema);
-const NewHighlight = mongoose.model("newhighlight", newSchema);
 
-export { New, NewHighlight };
+export default New;

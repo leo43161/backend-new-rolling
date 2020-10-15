@@ -24,7 +24,8 @@ newsCtrl.postNew = async (req, res) => {
     imgSecundaria,
     pieDeImgPrincipal,
     pieDeImgSecundaria,
-    fecha
+    fecha,
+    destacado
   } = req.body;
   console.log(req.body);
   try {
@@ -38,7 +39,8 @@ newsCtrl.postNew = async (req, res) => {
       imgSecundaria,
       pieDeImgPrincipal,
       pieDeImgSecundaria,
-      fecha
+      fecha,
+      destacado
     });
     await newAdd.save();
     res.status(201).json({ mensaje: "Se envio correctamente" });
