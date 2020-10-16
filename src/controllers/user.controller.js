@@ -12,24 +12,39 @@ userCtrl.getUsers = async (req, res) => {
 };
 
 userCtrl.singup = async (req, res) => {
-  const { user, email, contrasenia } = req.body;
-  const emailUser = await Usuario.findOne({ email: email });
-  if (emailUser) {
-    return res.status(500).json({ mensaje: "El usuario ya esta registrado" });
-  }
-  const nuevoUsuario = new Usuario({
-    user,
+  const {
+    nombre,
     email,
+    direccion,
+    localidad,
+    codigoPostal,
     contrasenia,
-    activo: false,
-    logueado: false,
-  });
+    activo,
+    logueado,
+    usuario
+  } = req.body;
+  console.log(req.body);
+  const userFind = await Usuario.findOne({ email });
+  if(userFind){
+    res.status(500).json({ mensajeError: "El usuario ya existe"});
+  }
   try {
-    await nuevoUsuario.save();
-    res.status(201).json({ mensaje: "Se envio correctamente" });
+    const usuarioNuevo = new Usuario({
+      nombre,
+      email,
+      direccion,
+      localidad,
+      codigoPostal,
+      contrasenia,
+      activo,
+      logueado,
+      usuario
+    });
+    await usuarioNuevo.save();
+    res.status(201).json({ mensaje: "Se creo correctamente" });
   } catch (error) {
-    res.status(500).json({ mensaje: "Ocurrio un error" });
-    next(error);
+    res.status(500).json({ mensaje: "Fallo al agregar un usuario, intentelo mas tarde", error: error });
+    next(error)
   }
 };
 
@@ -43,17 +58,22 @@ userCtrl.singin = async (req, res) => {
   console.log(userFind);
   if (!userFind) {
     res.status(500).json({ mensaje: "Usuario no encontrado" });
+    return
   }
   try {
     const match = await userFind.matchContrasenias(contrasenia);
-    console.log(match)
-    if(match){
-      userFind.cambiarActivo();
+    console.log(match);
+    if (match) {
+      userFind.cambiarLogueado();
+      res.status(201).json({
+        mensaje: "La contraseñas son iguales",
+        match: match,
+        user: userFind,
+      });
+    } else {
       res
-      .status(201)
-      .json({ mensaje: "La contraseñas son iguales", "match": match, user: userFind });
-    }else{
-      res.status(500).json({ mensaje: "La contraseña o el email no coinciden" });
+        .status(500)
+        .json({ mensaje: "La contraseña o el email no coinciden" });
     }
   } catch (error) {
     res.status(500).json({ mensaje: "Ocurrio un error" });
@@ -61,7 +81,7 @@ userCtrl.singin = async (req, res) => {
   }
 };
 
-userCtrl.logout = async(req, res) => {
+userCtrl.logout = async (req, res) => {
   const userFind = await Usuario.findOne({ activo: false });
   console.log(userFind);
 };

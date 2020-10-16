@@ -1,4 +1,4 @@
-const sessionCtrl = {};
+/* const sessionCtrl = {};
 import '../config/sessions'
 
 sessionCtrl.postLogin = async (req, res) => {
@@ -14,4 +14,4 @@ sessionCtrl.postLogin = async (req, res) => {
     res.send(`Hola! has visto esta pagina ${req.session.cuenta}`);
   };
 
-export default sessionCtrl;
+export default sessionCtrl; */

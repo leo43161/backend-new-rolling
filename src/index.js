@@ -4,7 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import "./dataBase";
-const MongoStore = require("connect-mongo")(session);
+/* const MongoStore = require("connect-mongo")(session); */
 import newsRouter from "./routes/news.routes";
 import newsHighlightsRouter from "./routes/newsHighlights.routes";
 import categoriasRouter from "./routes/categorias.routes";
@@ -16,8 +16,8 @@ import bodyParser from "body-parser";
 import "./config/sessions";
 const app = express();
 
-const MONGO_URL =
-  "mongodb+srv://leo43:rolling22@cluster0.9z2qy.gcp.mongodb.net/news";
+/* const MONGO_URL =
+  "mongodb+srv://leo43:rolling22@cluster0.9z2qy.gcp.mongodb.net/news"; */
 
 //midlewares
 app.use(morgan("dev")); //Me permite ver la informacion en la consola
@@ -25,7 +25,7 @@ app.use(cors()); //Permite poder aceptar las conexiones remotas, enviar y recibi
 app.use(express.json()); //Permite al servidor entender formato JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public"))); //Esto permite que se pueda acceder a la carpeta public
-app.use(
+/* app.use(
   session({
     secret: "ESTO ES SECRETO",
     resave: true,
@@ -36,11 +36,9 @@ app.use(
     }),
     name: "session",
   })
-);
+); */
 /* app.use(passport.initialize());
 app.use(passport.session()); */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 //definimos una variable "port"
 app.set("port", process.env.PORT || 4000);
@@ -51,7 +49,6 @@ app.use("/highlights", newsHighlightsRouter);
 app.use("/categorias", categoriasRouter);
 app.use("/adm", userAdmRouter);
 app.use("/users", usersRouter);
-app.use("/", sessionRouter);
 
 
 //Esto funciona

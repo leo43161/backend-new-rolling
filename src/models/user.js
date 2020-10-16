@@ -5,15 +5,14 @@ const userSchema = new Schema(
   {
     nombre: {
       type: String,
-      maxlength: 50,
-      unique: true,
+      maxlength: 60,
       required: true,
     },
     email: {
       type: String,
-      maxlength: 30,
-      unique: true,
+      maxlength: 40,
       required: true,
+      unique:true
     },
     direccion: {
       type: String,
@@ -24,20 +23,24 @@ const userSchema = new Schema(
       required: true,
     },
     codigoPostal: {
-      type: Number,
+      type: String,
       maxlength: 10,
       required: true,
     },
     contrasenia: {
       type: String,
-      minlength: 8,
       required: true,
     },
     activo: Boolean,
     logueado: Boolean,
+    usuario: Number,
   },
   {
-    timestamps: true,
+    timestamps: {
+      type: Number,
+      maxlength: 1,
+      required: true,
+    },
   }
 );
 
@@ -62,6 +65,17 @@ userSchema.methods.matchContrasenias = async function (contrasenia) {
 };
 
 userSchema.methods.cambiarActivo = async function () {
+  const usuario = this;
+  if(usuario.activo){
+    usuario.activo = false;
+    next();
+  }else{
+    usuario.activo = true;
+    next();
+  }
+};
+
+userSchema.methods.cambiarLogueado = async function () {
   const usuario = this;
   if(usuario.activo){
     usuario.logueado = false;
