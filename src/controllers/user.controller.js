@@ -21,12 +21,12 @@ userCtrl.singup = async (req, res) => {
     contrasenia,
     activo,
     logueado,
-    usuario
+    usuario,
   } = req.body;
   console.log(req.body);
   const userFind = await Usuario.findOne({ email });
-  if(userFind){
-    res.status(500).json({ mensajeError: "El usuario ya existe"});
+  if (userFind) {
+    res.status(500).json({ mensajeError: "El usuario ya existe" });
   }
   try {
     const usuarioNuevo = new Usuario({
@@ -38,13 +38,16 @@ userCtrl.singup = async (req, res) => {
       contrasenia,
       activo,
       logueado,
-      usuario
+      usuario,
     });
     await usuarioNuevo.save();
     res.status(201).json({ mensaje: "Se creo correctamente" });
   } catch (error) {
-    res.status(500).json({ mensaje: "Fallo al agregar un usuario, intentelo mas tarde", error: error });
-    next(error)
+    res.status(500).json({
+      mensaje: "Fallo al agregar un usuario, intentelo mas tarde",
+      error: error,
+    });
+    next(error);
   }
 };
 
@@ -55,24 +58,30 @@ userCtrl.login = (req, res) => {
 userCtrl.singin = async (req, res) => {
   const { email, contrasenia } = req.body;
   const userFind = await Usuario.findOne({ email });
-  console.log(userFind);
   if (!userFind) {
     res.status(500).json({ mensaje: "Usuario no encontrado" });
-    return
+    return;
   }
   try {
     const match = await userFind.matchContrasenias(contrasenia);
-    console.log(match);
     if (match) {
-      userFind.cambiarLogueado();
-      res.status(201).json({
-        mensaje: "La contraseñas son iguales",
-        match: match,
-        user: userFind,
-      });
+      if (userFind.activo) {
+        userFind.logueado = true;
+        res.status(201).json({
+          mensaje: "Usuario logueado",
+          match: match,
+          user: userFind,
+        });
+      } else {
+        res.status(403).json({
+          mensaje: "Cuenta en estado inactivo",
+          match: match,
+          user: userFind,
+        });
+      }
     } else {
       res
-        .status(500)
+        .status(403)
         .json({ mensaje: "La contraseña o el email no coinciden" });
     }
   } catch (error) {

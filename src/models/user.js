@@ -12,7 +12,7 @@ const userSchema = new Schema(
       type: String,
       maxlength: 40,
       required: true,
-      unique:true
+      unique: true,
     },
     direccion: {
       type: String,
@@ -55,34 +55,39 @@ userSchema.pre("save", function (next) {
       usuario.contrasenia = hash;
       next();
     });
-  }else{
-    next()
+  } else {
+    next();
   }
 });
 
 userSchema.methods.matchContrasenias = async function (contrasenia) {
-  return await bcrypt.compare(contrasenia, this.contrasenia)
+  return await bcrypt.compare(contrasenia, this.contrasenia);
 };
 
 userSchema.methods.cambiarActivo = async function () {
   const usuario = this;
-  if(usuario.activo){
-    usuario.activo = false;
-    next();
-  }else{
-    usuario.activo = true;
-    next();
+  if (usuario.activo) {
+    return (usuario.activo = false);
+  } else {
+    return (usuario.activo = true);
   }
 };
 
-userSchema.methods.cambiarLogueado = async function () {
+/* userSchema.method("cambiarLogueado", function () {
   const usuario = this;
-  if(usuario.activo){
+  if (usuario.activo) {
     usuario.logueado = false;
-    next();
-  }else{
+  } else {
     usuario.logueado = true;
-    next();
+  }
+}); */
+
+userSchema.methods.cambiarLogueado = function (cb) {
+  const usuario = this;
+  if (usuario.activo) {
+    usuario.logueado = false;
+  } else {
+    usuario.logueado = true;
   }
 };
 
