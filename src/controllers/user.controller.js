@@ -51,9 +51,6 @@ userCtrl.singup = async (req, res) => {
   }
 };
 
-userCtrl.login = (req, res) => {
-  res.send("Login");
-};
 
 userCtrl.singin = async (req, res) => {
   const { email, contrasenia } = req.body;
@@ -67,6 +64,7 @@ userCtrl.singin = async (req, res) => {
     if (match) {
       if (userFind.activo) {
         userFind.logueado = true;
+        await Usuario.findByIdAndUpdate(userFind._id, userFind);
         res.status(201).json({
           mensaje: "Usuario logueado",
           match: match,
@@ -91,8 +89,21 @@ userCtrl.singin = async (req, res) => {
 };
 
 userCtrl.logout = async (req, res) => {
-  const userFind = await Usuario.findOne({ activo: false });
-  console.log(userFind);
+  const userFind = await Usuario.findOne({ logueado: true });
+  try {
+    if (userFind) {
+      userFind.logueado = false;
+      await Usuario.findByIdAndUpdate(userFind._id, userFind);
+      res.status(201).json({
+        mensaje: "Se hizo el logout correctamente",
+      });
+    } else {
+      res.status(403).json({ mensaje: "No hay ningun usuario logueado" });
+    }
+  } catch (error) {
+    res.status(500).json({ mensaje: "Ocurrio un error" });
+    next(error);
+  }
 };
 
 export default userCtrl;
