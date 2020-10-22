@@ -32,7 +32,6 @@ const userSchema = new Schema(
       required: true,
     },
     activo: Boolean,
-    logueado: Boolean,
     usuario: Number,
   },
   {
@@ -62,33 +61,6 @@ userSchema.pre("save", function (next) {
 
 userSchema.methods.matchContrasenias = async function (contrasenia) {
   return await bcrypt.compare(contrasenia, this.contrasenia);
-};
-
-userSchema.methods.cambiarActivo = async function () {
-  const usuario = this;
-  if (usuario.activo) {
-    return (usuario.activo = false);
-  } else {
-    return (usuario.activo = true);
-  }
-};
-
-/* userSchema.method("cambiarLogueado", function () {
-  const usuario = this;
-  if (usuario.activo) {
-    usuario.logueado = false;
-  } else {
-    usuario.logueado = true;
-  }
-}); */
-
-userSchema.methods.cambiarLogueado = function (cb) {
-  const usuario = this;
-  if (usuario.activo) {
-    usuario.logueado = false;
-  } else {
-    usuario.logueado = true;
-  }
 };
 
 const Usuario = mongoose.model("usuario", userSchema);
