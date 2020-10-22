@@ -4,15 +4,10 @@ import cors from "cors";
 import path from "path";
 import "./dataBase";
 import newsRouter from "./routes/news.routes";
-import newsHighlightsRouter from "./routes/newsHighlights.routes";
 import categoriasRouter from "./routes/categorias.routes";
 import userAdmRouter from "./routes/userAdm.routes";
 import usersRouter from "./routes/user.routes";
-import "./config/sessions";
 const app = express();
-
-/* const MONGO_URL =
-  "mongodb+srv://leo43:rolling22@cluster0.9z2qy.gcp.mongodb.net/news"; */
 
 //midlewares
 app.use(morgan("dev")); //Me permite ver la informacion en la consola
@@ -27,7 +22,6 @@ app.set("port", process.env.PORT || 4000);
 
 //defino mi ruta principal
 app.use("/news", newsRouter);
-app.use("/highlights", newsHighlightsRouter);
 app.use("/categorias", categoriasRouter);
 app.use("/adm", userAdmRouter);
 app.use("/users", usersRouter);
