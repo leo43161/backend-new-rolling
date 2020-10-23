@@ -1,5 +1,5 @@
 const newsCtrl = {};
-import { New } from "../models/new";
+import New from "../models/new";
 
 newsCtrl.getNews = async (req, res) => {
   try {
