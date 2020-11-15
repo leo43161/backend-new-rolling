@@ -1,9 +1,7 @@
 # Backend Rolling News
 
-Backend News Rolling es el Backend del proyecto final de los alumnos del curso  FullStack de Rolling Code School.
-El proyecto consiste en la creacion de un sitio web sobre noticias, la pagina
-debe cumplir ciertos requerimientos aprendidos durante el curso, como ser: la maquetación (html, css, bootstrap), 
-que sea un sitio responsive, que haya un CRUD basico y la utilización del stack MERN.
+Rolling News es el proyecto final de los alumnos del curso FullStack de Rolling Code School.
+El proyecto consiste en la creacion de un sitio web sobre noticias, el BackEnd tiene que proveer de informacion al FrontEnd y ademas de controlar altas, bajas, modificaciones y guardarlas en la base de datos.
 
 # Autores
 ### August Fercar<br/>
@@ -13,23 +11,46 @@ que sea un sitio responsive, que haya un CRUD basico y la utilización del stack
 ### Leonardo Palavecino<br/>
 ### Mariana Granara<br/>
 
+## Autores
+August Fercar<br/>
+Fabri Oller<br/>
+Franco Luna<br/>
+Hernan Sanchez<br/>
+Leonardo Palavecino<br/>
+Mariana Granara<br/>
+
+
+## Pasos para clonar el repositorio, todos los comandos van sin comillas!!
+
+### 1. `Primero paso`
+
+Ejecutar 'git clone https://github.com/leo43161/backend-new-rolling.git' en su terminal 
+
+### 2. `Segundo paso`
+
+Ejecutar 'npm install' tambien en la terminal
+
+### 3. `Tercer paso`
+
+Para correr el proyecto usar 'npm start'
 
 ## Scripts disponibles
 
 En el proyecto puede ejecutar los siguientes comandos:
 
-### `git clone`
-Para clonar el proyecto URL.
-
 ### `npm install`
 
+Se debera intalar todas las dependencias necesarias para el correcto funcionamiento del codigo utilizando dicho comando.
+
 ### `npm run dev` 
+
 Este comando inicia el proyecto en la terminal.<br/>
- Inicia el puerto inicia los midleware y se conecta  la base de datos
-y da seguimiento a los cambios.
+
+Inicia el puerto, los midleware, se conecta con la base de datos y observa los cambios e informa de errores.
 
 ### `npm run start`
-Inicia una pagina en el navegador y abre el puerto 4000.
+
+Ejecuta el proyecto iniciandolo en el puerto 4000, ejecuntado los middlewares y conectandose con la base de datos 
 
 
 
