@@ -54,5 +54,17 @@ Ejecuta el proyecto iniciandolo en el puerto 4000, ejecuntado los middlewares y 
 
 
 
+## Consultal API disponibles
 
+Aquí se listaran las direcciones que se deben utilizar para poder extraer la informacion de la base de datos:
+
+### ADMINISTRADOR
+
+-**Para traer** el usuario administrador (Que por el momento sera uno solo en estado activo) se debe utilizar el metodo *GET* en: https://rolling-news.herokuapp.com/adm
+
+-**Para agregar** un usuario administrador (Que por el momento sera no se deberia utilizar) se debe utilizar el metodo *POST* en: https://rolling-news.herokuapp.com/adm
+
+------------------------------
+
+--**Para editar** el usuario administrador se debe utilizar el metodo *PUT* en: https://rolling-news.herokuapp.com/adm/{_ID del administrador}
 
