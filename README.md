@@ -91,4 +91,4 @@ Aquí se listaran las direcciones que se deben utilizar para poder extraer la in
 
 - **Para traer** una categoria se debe utilizar el metodo *GET* en: *https://rolling-news.herokuapp.com/categorias/{_id de categoria}*
 
-- **Para eliminar** una categoria se debe utilizar el metodo *DELETE* en: *https://rolling-news.herokuapp.com/categorias/{_id de categoria}*
+- **Para eliminar** una categoria se debe utilizar el metodo *DELETE* en: `*https://rolling-news.herokuapp.com/categorias/{_id de categoria}*`
