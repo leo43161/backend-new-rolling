@@ -57,7 +57,7 @@ Ejecuta el proyecto iniciandolo en el puerto 4000, ejecuntado los middlewares y 
 
 Aquí se listaran las direcciones que se deben utilizar para poder extraer la informacion de la base de datos:
 
-### USUARIOS
+## USUARIOS
 
 - **Para traer** los usuario se debe utilizar el metodo *GET* en: *`https://rolling-news.herokuapp.com/users`*
 
