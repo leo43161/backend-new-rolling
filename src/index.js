@@ -5,7 +5,6 @@ import path from "path";
 import "./dataBase";
 import newsRouter from "./routes/news.routes";
 import categoriasRouter from "./routes/categorias.routes";
-import userAdmRouter from "./routes/userAdm.routes";
 import usersRouter from "./routes/user.routes";
 const app = express();
 
@@ -23,7 +22,6 @@ app.set("port", process.env.PORT || 4000);
 //defino mi ruta principal
 app.use("/news", newsRouter);
 app.use("/categorias", categoriasRouter);
-app.use("/adm", userAdmRouter);
 app.use("/users", usersRouter);
 
 
@@ -35,8 +33,6 @@ app.get("/logout", (req, res) => {
     res.status(200).json({ mensaje: "Se a deslogueado" });
   });
 });
-
-
 
 //Escucho el puerto
 app.listen(app.get("port"), () => {
