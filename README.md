@@ -59,11 +59,11 @@ Aquí se listaran las direcciones que se deben utilizar para poder extraer la in
 
 ### USUARIOS
 
-- **Para traer** los usuario se debe utilizar el metodo *GET* en: https://rolling-news.herokuapp.com/users
+- **Para traer** los usuario se debe utilizar el metodo *GET* en: *`https://rolling-news.herokuapp.com/users`*
 
-- **Para agregar** un usuario se debe utilizar el metodo *POST* en: https://rolling-news.herokuapp.com/users/singup
+- **Para agregar** un usuario se debe utilizar el metodo *POST* en: *`https://rolling-news.herokuapp.com/users/singup`*
 
-- **Para hacer un login** a un usuario se debe utilizar el metodo *POST* en: https://rolling-news.herokuapp.com/users/singin
+- **Para hacer un login** a un usuario se debe utilizar el metodo *POST* en: *`https://rolling-news.herokuapp.com/users/singin`*
 
 ## NOTICIAS GENERALES y NOTICIAS DESTACADAS
 
