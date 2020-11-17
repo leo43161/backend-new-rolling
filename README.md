@@ -67,28 +67,28 @@ Aquí se listaran las direcciones que se deben utilizar para poder extraer la in
 
 ## NOTICIAS GENERALES y NOTICIAS DESTACADAS
 
-- **Para traer** todas las noticias generales o destacadas se debe utilizar el metodo *GET* en: https://rolling-news.herokuapp.com/news o https://rolling-news.herokuapp.com/highlights
+- **Para traer** todas las noticias generales o destacadas se debe utilizar el metodo *GET* en: `https://rolling-news.herokuapp.com/news` o `https://rolling-news.herokuapp.com/highlights`
 
-- **Para agregar** a las noticias generales o destacadas se debe utilizar el metodo *POST* en: https://rolling-news.herokuapp.com/news o news.herokuapp.com/highlights
+- **Para agregar** a las noticias generales o destacadas se debe utilizar el metodo *POST* en: `https://rolling-news.herokuapp.com/news` o `news.herokuapp.com/highlights`
 
 -------------------------------
 
-- **Para editar** una noticia general o destacada se debe utilizar el metodo *PUT* en: *https://rolling-news.herokuapp.com/news/{_id de noticia}* o *news.herokuapp.com/highlights/{_id de noticia}*
+- **Para editar** una noticia general o destacada se debe utilizar el metodo *PUT* en: `https://rolling-news.herokuapp.com/news/{_id de noticia}` o `news.herokuapp.com/highlights/{_id de noticia}`
 
-- **Para traer** una noticia general o destacada se debe utilizar el metodo *GET* en: *https://rolling-news.herokuapp.com/news/{_id de noticia}* o *news.herokuapp.com/highlights/{_id de noticia}*
+- **Para traer** una noticia general o destacada se debe utilizar el metodo *GET* en: `https://rolling-news.herokuapp.com/news/{_id de noticia}` o `news.herokuapp.com/highlights/{_id de noticia}`
 
-- **Para eliminar** una noticia general o destacada se debe utilizar el metodo *DELETE* en: *https://rolling-news.herokuapp.com/news/{_id de noticia}* o *news.herokuapp.com/highlights/{_id de noticia}*
+- **Para eliminar** una noticia general o destacada se debe utilizar el metodo *DELETE* en: `https://rolling-news.herokuapp.com/news/{_id de noticia}` o `news.herokuapp.com/highlights/{_id de noticia}`
 
 ## CATEGORIAS
 
-- **Para traer** todas las categorias se debe utilizar el metodo *GET* en: *https://rolling-news.herokuapp.com/categorias*
+- **Para traer** todas las categorias se debe utilizar el metodo *GET* en: `https://rolling-news.herokuapp.com/categorias`
 
-- **Para agregar** a categorias se debe utilizar el metodo *POST* en: *https://rolling-news.herokuapp.com/categorias*
+- **Para agregar** a categorias se debe utilizar el metodo *POST* en: `https://rolling-news.herokuapp.com/categorias`
 
 -------------------------------
 
-- **Para editar** una categoria se debe utilizar el metodo *PUT* en: *https://rolling-news.herokuapp.com/categorias/{_id de categoria}*
+- **Para editar** una categoria se debe utilizar el metodo *PUT* en: `https://rolling-news.herokuapp.com/categorias/{_id de categoria}`
 
-- **Para traer** una categoria se debe utilizar el metodo *GET* en: *https://rolling-news.herokuapp.com/categorias/{_id de categoria}*
+- **Para traer** una categoria se debe utilizar el metodo *GET* en: `https://rolling-news.herokuapp.com/categorias/{_id de categoria}`
 
-- **Para eliminar** una categoria se debe utilizar el metodo *DELETE* en: `*https://rolling-news.herokuapp.com/categorias/{_id de categoria}*`
+- **Para eliminar** una categoria se debe utilizar el metodo *DELETE* en: `https://rolling-news.herokuapp.com/categorias/{_id de categoria}`
